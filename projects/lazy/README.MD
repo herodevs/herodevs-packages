@@ -1,4 +1,4 @@
-# <lazy-af> for lazy loading in Angular
+# `<lazy-af>` for lazy loading in Angular
 
 Every Angular app is different and has different needs. Yet Angular only provides
 one method for lazily loading code: using the `loadChildren` piece in the routes

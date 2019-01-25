@@ -1,7 +1,7 @@
 {
   "name": "@herodevs/dynamic-af",
   "description": "This is a dynamic service.",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "license": "MIT",
   "private": false,
   "peerDependencies": {

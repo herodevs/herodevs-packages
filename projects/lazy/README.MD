@@ -103,4 +103,5 @@ the `<lazy-af>` component that you added to your template.
 
 ## Question
 
-- [Report an Issue]()
+- [Report an Issue](https://github.com/herodevs/herodevs-packages/issues)
+- [View Past Issues](https://github.com/herodevs/herodevs-packages/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aclosed+)

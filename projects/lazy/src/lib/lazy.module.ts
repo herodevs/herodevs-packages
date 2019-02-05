@@ -1,10 +1,10 @@
 import { NgModule, NgModuleFactoryLoader, SystemJsNgModuleLoader } from '@angular/core';
-import { LazyAFComponent } from './lazy-af.component';
+import { LazyAFDirective } from './lazy-af.directive';
 
 @NgModule({
   imports: [],
-  declarations: [LazyAFComponent],
-  exports: [LazyAFComponent],
+  declarations: [LazyAFDirective],
+  exports: [LazyAFDirective],
   providers: [{ provide: NgModuleFactoryLoader, useClass: SystemJsNgModuleLoader }],
 })
 export class LazyModule {}

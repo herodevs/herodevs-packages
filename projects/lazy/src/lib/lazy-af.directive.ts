@@ -1,6 +1,6 @@
 import {
   AfterViewInit,
-  Component,
+  Directive,
   EventEmitter,
   Injector,
   Input,
@@ -16,14 +16,10 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
 import { distinctUntilChanged, filter, first } from 'rxjs/operators';
 import { DynamicAFService, ICreatedModule, ICreatedComponentInterface } from '@herodevs/dynamic-af';
 
-@Component({
-  selector: 'lazy-af',
-  template: `
-    <!-- Empty On Purpose. Bootstrapped component from Lazy Loaded Module will live here. -->
-  `,
-  styles: [],
+@Directive({
+  selector: 'lazy-af, [lazyAf]',
 })
-export class LazyAFComponent implements AfterViewInit, OnChanges, OnDestroy {
+export class LazyAFDirective implements AfterViewInit, OnChanges, OnDestroy {
   // @ts-ignore
   @Input() moduleName: string;
 

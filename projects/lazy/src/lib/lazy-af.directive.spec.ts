@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LazyAFComponent } from './lazy-af.component';
+import { LazyAFDirective } from './lazy-af.directive';
 
 describe('LazyComponent', () => {
-  let component: LazyAFComponent;
-  let fixture: ComponentFixture<LazyAFComponent>;
+  let component: LazyAFDirective;
+  let fixture: ComponentFixture<LazyAFDirective>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LazyAFComponent],
+      declarations: [LazyAFDirective],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LazyAFComponent);
+    fixture = TestBed.createComponent(LazyAFDirective);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

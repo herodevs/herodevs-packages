@@ -12,7 +12,7 @@ import {
   SimpleChanges,
   ViewContainerRef,
 } from '@angular/core';
-import { BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, first } from 'rxjs/operators';
 import { DynamicAFService, ICreatedModule, ICreatedComponentInterface } from '@herodevs/dynamic-af';
 
@@ -46,7 +46,7 @@ export class LazyAFComponent implements AfterViewInit, OnChanges, OnDestroy {
    *  It only fires once. If the input changes, this observable
    *  will not fire again.
    */
-  action$ = combineLatest(
+  action$: Observable<any> = combineLatest(
     this.changesBS.asObservable().pipe(
       filter((val: SimpleChanges) => {
         return val && val.moduleName && val.moduleName.currentValue;
@@ -59,7 +59,7 @@ export class LazyAFComponent implements AfterViewInit, OnChanges, OnDestroy {
     ),
   );
 
-  subs = [
+  subs: Subscription[] = [
     this.action$.subscribe(() => {
       // Uses the loader function to lazy load and compile a module.
       this.loader

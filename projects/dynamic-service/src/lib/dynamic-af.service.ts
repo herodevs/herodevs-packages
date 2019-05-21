@@ -3,6 +3,7 @@ import {
   Compiler,
   ComponentFactory,
   ComponentFactoryResolver,
+  ComponentRef,
   Injectable,
   Injector,
   NgModuleFactory,
@@ -15,6 +16,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 export interface ICreatedComponentInterface {
   next: (data: { [key: string]: any }) => void;
   detach: () => void;
+  componentRef: ComponentRef<any>;
 }
 
 export interface ICreatedModule {
@@ -32,8 +34,6 @@ interface CreateAttachModuleOptions {
   context?: { [key: string]: any };
   vcr?: ViewContainerRef;
 }
-
-const FACTORY_CLASS_SUFFIX = 'NgFactory';
 
 @Injectable({
   providedIn: 'root',
@@ -208,6 +208,7 @@ export class DynamicAFService {
     return {
       detach,
       next,
+      componentRef,
     };
   }
 

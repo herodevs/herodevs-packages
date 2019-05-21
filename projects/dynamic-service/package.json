@@ -1,11 +1,20 @@
 {
   "name": "@herodevs/dynamic-af",
   "description": "This is a dynamic service.",
-  "version": "0.0.8",
+  "version": "0.0.12",
   "license": "MIT",
   "private": false,
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/herodevs/herodevs-packages"
+  },
+  "bugs": {
+    "url": "https://github.com/herodevs/herodevs-packages/issues"
+  },
+  "homepage": "https://github.com/herodevs/herodevs-packages",
+  "author": "Frosty <aaronfrost@gmail.com>"
 }

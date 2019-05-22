@@ -1,8 +1,8 @@
-# DynamicAFService
+# DynamicComponentService
 
 A service that makes dynamically creating components easy.
 
-When you use DynamicAFService to create a component, you are given
+When you use DynamicComponentService to create a component, you are given
 backed an `ICreatedComponentInterface` which allows you to do the
 following three things:
 
@@ -36,7 +36,7 @@ constructor of your component/service, like so:
 
 ```typescript
 export class MyCoolComponent {
-  constructor(private dynamicService: DynamicAFService) {
+  constructor(private dynamicService: DynamicComponentService) {
     // ...
   }
 }

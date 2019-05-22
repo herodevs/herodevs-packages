@@ -1,27 +1,18 @@
-# Lazyloading
+# HeroDevs Packages
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.2.
+This is a repo where HeroDevs develop and test our public packages.
+To see the source for each public npm package, head into the
+`projects` folder and see each project.
 
-## Development server
+#### Publishing a new package
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To add a new package to be published, do the following:
 
-## Code scaffolding
+1. Use the CLI to add the new package.
+2. Modify the `tsconfig.json` to account for the new package and it's mock-npm status in this repo. See the `path` section in `tsconfig.json`.
+3. Add a build and package step into the `package.json` so that it can be built.
+4. Add a way in the main app for package to be tested and used.
+5. Build and package your project into the `dist` directory.
+6. The first time you publish it, you will need to cd into the dist folder and run `npm publish --access public`. After the first time, you can simply run `npm publish` from the `dist/<package>` folder.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+If you have any access errors when publishing, request to be added to the HeroDevs team on npm.

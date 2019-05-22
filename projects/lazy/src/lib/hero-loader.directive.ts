@@ -1,6 +1,6 @@
 import {
   AfterViewInit,
-  Component,
+  Directive,
   EventEmitter,
   Injector,
   Input,
@@ -12,29 +12,26 @@ import {
   SimpleChanges,
   ViewContainerRef,
 } from '@angular/core';
-import { BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, first } from 'rxjs/operators';
+import {
+  DynamicComponentService,
+  ICreatedModule,
+  ICreatedComponentInterface,
+} from '@herodevs/dynamic-component-service';
 
 // @ts-ignore
-import { ICreatedComponentInterface, LazyAFService } from '../../services/lazy.service';
-
-@Component({
-  selector: 'lazy-af',
-  template: `
-    <!-- Empty On Purpose. Bootstrapped component from Lazy Loaded Module will live here. -->
-  `,
-  styles: [],
+@Directive({
+  selector: 'hero-loader, [hero-loader]',
 })
-export class LazyAFComponent implements AfterViewInit, OnChanges, OnDestroy {
+export class HeroLoaderDirective implements AfterViewInit, OnChanges, OnDestroy {
   // @ts-ignore
   @Input() moduleName: string;
 
   @Output() init = new EventEmitter();
 
-  // @ts-ignore
   componentRef: ICreatedComponentInterface;
 
-  // @ts-ignore
   changesBS = new BehaviorSubject<SimpleChanges>(null);
 
   // Need to wait until the component view has inited
@@ -48,6 +45,7 @@ export class LazyAFComponent implements AfterViewInit, OnChanges, OnDestroy {
    *  It only fires once. If the input changes, this observable
    *  will not fire again.
    */
+  // @ts-ignore
   action$ = combineLatest(
     this.changesBS.asObservable().pipe(
       filter((val: SimpleChanges) => {
@@ -61,17 +59,18 @@ export class LazyAFComponent implements AfterViewInit, OnChanges, OnDestroy {
     ),
   );
 
-  subs = [
+  subs: Subscription[] = [
     this.action$.subscribe(() => {
       // Uses the loader function to lazy load and compile a module.
       this.loader
         .load(this.moduleName)
         .then((compiledModule: NgModuleFactory<any>) => {
-          return this.lazy.createComponentAsync(compiledModule, this.injector, this.vcr);
+          if (this.destroyed) return {};
+          return this.lazy.createAndAttachModuleAsync(compiledModule, this.injector, { vcr: this.vcr });
         })
-        .then((spawnRef: ICreatedComponentInterface) => {
-          this.componentRef = spawnRef;
-          this.init.emit(spawnRef);
+        .then(({ moduleRef, componentRef }: ICreatedModule) => {
+          this.componentRef = componentRef;
+          this.init.emit(componentRef);
         });
     }),
   ];
@@ -79,7 +78,7 @@ export class LazyAFComponent implements AfterViewInit, OnChanges, OnDestroy {
   destroyed = false;
 
   constructor(
-    private lazy: LazyAFService,
+    private lazy: DynamicComponentService,
     private vcr: ViewContainerRef,
     private injector: Injector,
     private loader: NgModuleFactoryLoader,

@@ -1,10 +1,10 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/dynamic-service",
+  "dest": "../../dist/dynamic",
   "lib": {
     "entryFile": "src/public_api.ts",
     "umdModuleIds": {
-      "dynamicAf": "dynamicAf"
+      "dynamicComponentService": "dynamicComponentService"
     }
   }
 }

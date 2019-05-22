@@ -11,7 +11,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { InternalNgModuleRef } from '@angular/core/src/linker/ng_module_factory';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription, Observable } from 'rxjs';
 
 export interface ICreatedComponentInterface {
   next: (data: { [key: string]: any }) => void;
@@ -38,7 +38,7 @@ interface CreateAttachModuleOptions {
 @Injectable({
   providedIn: 'root',
 })
-export class DynamicAFService {
+export class DynamicComponentService {
   constructor(
     private _compiler: Compiler,
     private cfr: ComponentFactoryResolver,
@@ -84,7 +84,7 @@ export class DynamicAFService {
     // The first time they try this and screw up, they will get this warning. This won't happen in prod.
     if (!type) {
       warn(`Module '${typeof createdModule.moduleRef}' has no bootstrap component. 
-      You must fix this before calling 'dynamicAFService.createAndAttachModule'.`);
+      You must fix this before calling 'dynamicComponentService.createAndAttachModule'.`);
     }
 
     const createdComponent = this.createAndAttachComponentSync(type, {
@@ -156,7 +156,7 @@ export class DynamicAFService {
 
       // Attach the instance to the end of the body
       document.body.appendChild((componentRef.hostView as any).rootNodes[0]);
-      warn(`Since no 'ViewContainerRef' was provided to 'dynamicAFService.createAndAttachComponent',
+      warn(`Since no 'ViewContainerRef' was provided to 'DynamicComponentService.createAndAttachComponent',
           the component is being attached to the root of the <body>. This is not recommended.`);
     }
 

@@ -13,10 +13,10 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
     "paths": {
-      "@herodevs/lazy-af": ["dist/lazy"],
-      "@herodevs/lazy-af/*": ["dist/lazy/*"],
-      "@herodevs/dynamic-af": ["dist/dynamic-service"],
-      "@herodevs/dynamic-af/*": ["dist/dynamic-service/*"]
+      "@herodevs/hero-loader": ["dist/loader"],
+      "@herodevs/hero-loader/*": ["dist/loader/*"],
+      "@herodevs/dynamic-component-service": ["dist/dynamic"],
+      "@herodevs/dynamic-component-service/*": ["dist/dynamic/*"]
     }
   }
 }

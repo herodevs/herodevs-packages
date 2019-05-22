@@ -11,11 +11,11 @@
     "e2e": "ng e2e",
     "build-lazy": "ng build lazy",
     "build-dynamic": "ng build dynamicService",
-    "npm-pack-lazy": "cd dist/lazy && npm pack",
-    "npm-pack-dynamic": "cd dist/dynamic-service && npm pack",
+    "npm-pack-lazy": "cd dist/loader && npm pack",
+    "npm-pack-dynamic": "cd dist/dynamic && npm pack",
     "package-lazy": "npm run build-lazy && npm run npm-pack-lazy",
     "package-dynamic": "npm run build-dynamic && npm run npm-pack-dynamic",
-    "package": "npm run package-dynamic && npm run package-lazy"
+    "package": "rm -rf dist/ && npm run package-dynamic && npm run package-lazy"
   },
   "private": false,
   "dependencies": {
@@ -62,7 +62,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "prettier --parser typescript --write",
+      "prettier --parser typescript --writeprettier --parser typescript --write",
       "git add"
     ]
   }

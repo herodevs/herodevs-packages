@@ -1,11 +1,11 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/lazy",
+  "dest": "../../dist/loader",
   "lib": {
     "entryFile": "src/public_api.ts",
     "umdModuleIds": {
-      "lazyAf": "lazyAf"
+      "heroLoader": "heroLoader"
     }
   },
-  "whitelistedNonPeerDependencies": ["@herodevs/dynamic-af"]
+  "whitelistedNonPeerDependencies": ["@herodevs/dynamic-component-service"]
 }

@@ -110,7 +110,7 @@
       "root": "projects/lazy",
       "sourceRoot": "projects/lazy/src",
       "projectType": "library",
-      "prefix": "lazy",
+      "prefix": "hero",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

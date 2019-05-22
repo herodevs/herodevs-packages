@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
     <p>
       foo works!
     </p>
-    <div (mouseover)="load = true">
+    <div (mouseover)="load = !load">
       Hello
-      <lazy-af *ngIf="load" [moduleName]="moduleName"></lazy-af>
+      <hero-loader *ngIf="load" [moduleName]="moduleName" (init)="saveComponentRef($event)"></hero-loader>
     </div>
   `,
   styles: [],
@@ -20,4 +20,11 @@ export class FooComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  saveComponentRef(ref) {
+    let num = 0;
+    setInterval(() => {
+      ref.next({ num: num++ });
+    }, 1000);
+  }
 }

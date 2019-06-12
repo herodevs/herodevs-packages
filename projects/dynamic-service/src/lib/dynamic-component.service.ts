@@ -24,7 +24,7 @@ export interface ICreatedComponentInterface {
 }
 
 export interface ICreatedModule {
-  moduleRef: InternalNgModuleRef<any>;
+  moduleRef: NgModuleRef<any>;
   componentRef?: ICreatedComponentInterface;
 }
 
@@ -57,7 +57,7 @@ export class DynamicComponentService {
    */
   createModuleSync(compiledModule: NgModuleFactory<any>, injector: Injector): ICreatedModule {
     // Now that the module is loaded and compiled, create an instance of it.
-    const moduleRef = compiledModule.create(injector) as InternalNgModuleRef<any>;
+    const moduleRef = compiledModule.create(injector) as NgModuleRef<any>;
 
     return {
       moduleRef,
@@ -83,7 +83,8 @@ export class DynamicComponentService {
     const createdModule = this.createModuleSync(compiledModule, injector);
 
     // Take the bootstrap component from that module.
-    const type = createdModule.moduleRef._bootstrapComponents[0];
+    // Using any, as in AngularV8 the InternalNgModuleRef no longer gets exported.
+    const type = (createdModule.moduleRef as any)._bootstrapComponents[0];
 
     // The first time they try this and screw up, they will get this warning. This won't happen in prod.
     if (!type) {

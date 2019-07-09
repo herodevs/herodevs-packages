@@ -1,11 +1,11 @@
 {
   "name": "@herodevs/hero-loader",
   "description": "This component allows you to lazily load your Angular module whenever you want, instead of being restricted to lazy loading on route changes.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@herodevs/dynamic-component-service": "^2.0.0"
+    "@herodevs/dynamic-component-service": "^2.0.1"
   },
   "peerDependencies": {
     "@angular/common": "^8.0.0-rc.0 || ^8.0.0",

@@ -8,10 +8,14 @@ import {
   Injector,
   NgModuleFactory,
   NgModuleRef,
+  Type,
   ViewContainerRef,
 } from '@angular/core';
-import { InternalNgModuleRef } from '@angular/core/src/linker/ng_module_factory';
 import { BehaviorSubject, Subscription, Observable } from 'rxjs';
+
+export interface InternalNgModuleRef<T> extends NgModuleRef<T> {
+  _bootstrapComponents: Type<any>[];
+}
 
 export interface ICreatedComponentInterface {
   next: (data: { [key: string]: any }) => void;

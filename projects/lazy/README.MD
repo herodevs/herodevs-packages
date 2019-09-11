@@ -99,7 +99,7 @@ Consider that `TestModule` looks as follows:
 export class TestModule {}
 ```
 
-Using `<hero-loader>` to load the `TestModule` will the `TestComponent` inside of the
+Using `<hero-loader>` to load the `TestModule` will render the `TestComponent` inside of the
 the `<hero-loader>` component that you added to your template.
 
 ## Question

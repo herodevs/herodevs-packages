@@ -112,7 +112,8 @@ export class DynamicComponentService {
     return new Promise((res, rej) => {
       try {
         res(this.createAndAttachModuleSync(compiledModule, injector, { vcr, context }));
-      } catch {
+      } catch (error) {
+        console.error(error)
         rej('Error created and attaching module async.');
       }
     });
